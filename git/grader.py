@@ -16,12 +16,17 @@ class LabGrader(Grader):
 
 	@Grader.addStep(name='step2')
 	def step2(self, workingDir, inputCommand):
-		pass
+		if exists(join(workingDir, 'IntroductionToOs', 'description.txt')):
+			return True
 
 	@Grader.addStep(name='step3')
 	def step3(self, workingDir, inputCommand):
-		pass
-	
+		if self.is_git_repo(join(workingDir, 'IntroductionToOs')):
+			repo = git.Repo(join(workingDir, 'IntroductionToOs'))
+			commits = list(repo.iter_commits("master", max_count=1))
+			message = commits[0].message.strip()
+			if message == "add description":
+				return True
 	
 	def is_git_repo(self, path):
 		try:

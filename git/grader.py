@@ -23,14 +23,19 @@ class LabGrader(Grader):
 	def step3(self, workingDir, inputCommand):
 		if self.is_git_repo(join(workingDir, 'IntroductionToOs')):
 			repo = git.Repo(join(workingDir, 'IntroductionToOs'))
-			commits = list(repo.iter_commits("master", max_count=1))
-			message = commits[0].message.strip()
+			commit = repo.head.commit
+			message = commit.message.strip()
 			if message == "add description":
 				return True
-	
+				
 	def is_git_repo(self, path):
 		try:
 			_ = git.Repo(path).git_dir
 			return True
 		except git.exc.InvalidGitRepositoryError:
 			return False
+
+
+
+
+

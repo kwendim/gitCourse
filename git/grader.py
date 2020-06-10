@@ -23,7 +23,7 @@ class LabGrader(Grader):
 		pass
 	
 	
-	def is_git_repo(path):
+	def is_git_repo(self, path):
 		try:
 			_ = git.Repo(path).git_dir
 			return True

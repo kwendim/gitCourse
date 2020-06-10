@@ -1,0 +1,7 @@
+title: Git fundamentals
+description: Learn the basic git commands
+labs:
+- title: git
+  description: learn the basic git commands
+  directory: /git
+  number_of_tasks: 3

@@ -6,7 +6,7 @@ from os.path import join
 class LabGrader(Grader):
 	@Grader.addStep(name='step1')
 	def step1(self, workingDir, inputCommand):
-		if inputCommand == "git clone https://github.com/kwendim/IntroductionToOs.git":
+		if inputCommand == "git clone https://github.com/kwendim/IntroductionToOs.git" or inputCommand == "git clone https://github.com/kwendim/IntroductionToOs":
 			return True
 
 	@Grader.addStep(name='step2')
